@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frederic Morin Consulting</title>
+  <title>Frédéric Morin | Consultation TI</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f5f5f5;
+      background: #f0f2f5;
       color: #333;
     }
     header {
@@ -17,6 +18,23 @@
       color: white;
       padding: 2rem;
       text-align: center;
+      position: relative;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .lang-toggle button {
+      background: #444;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .lang-toggle button:hover {
+      background: #666;
     }
     main {
       padding: 2rem;
@@ -25,38 +43,96 @@
     }
     h2 {
       color: #2a2a2a;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.3rem;
     }
-    .contact {
+    ul {
+      padding-left: 1.5rem;
+    }
+    .contact, .form {
       margin-top: 2rem;
+    }
+    input, textarea, button {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button[type="submit"] {
+      background-color: #2a2a2a;
+      color: white;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #444;
     }
     a {
       color: #007acc;
     }
+    .logo {
+      width: 60px;
+      height: auto;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
   </style>
+  <script>
+    function toggleLanguage() {
+      const frElements = document.querySelectorAll('.fr');
+      const enElements = document.querySelectorAll('.en');
+      frElements.forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+      enElements.forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+    }
+  </script>
 </head>
 <body>
   <header>
-    <h1>Frederic Morin Consulting</h1>
-    <p>Practical software solutions | Azure • C# • Integration • Support</p>
+    <img src="logo.png" alt="Logo" class="logo" />
+    <div class="lang-toggle">
+      <button onclick="toggleLanguage()">FR / EN</button>
+    </div>
+    <h1>Frédéric Morin — 9531-1064 Qc INC</h1>
+    <p class="en">Practical software solutions | Azure • C# • Integration • Support</p>
+    <p class="fr">Solutions logicielles pratiques | Azure • C# • Intégration • Support</p>
   </header>
   <main>
     <section>
-      <h2>What I Do</h2>
-      <p>I help businesses build, integrate, and support systems using modern Microsoft technologies. From custom Azure Functions to Dynamics 365 and SmartConnect automation — I get it working, fast and reliably.</p>
+      <h2 class="en">What I Do</h2>
+      <h2 class="fr">Ce que je fais</h2>
+      <p class="en">I help businesses build, integrate, and support systems using modern Microsoft technologies. From custom Azure Functions to Dynamics 365 and SmartConnect automation — I get it working, fast and reliably.</p>
+      <p class="fr">J'aide les entreprises à bâtir, intégrer et soutenir leurs systèmes avec les technologies Microsoft modernes. Azure Functions, D365, automatisation SmartConnect — je livre des solutions fiables et rapides.</p>
     </section>
     <section>
       <h2>Services</h2>
       <ul>
-        <li>System integration (M3, D365, SQL, APIs)</li>
-        <li>Azure Functions & cloud automation</li>
-        <li>SmartConnect & BPA workflow fixes</li>
-        <li>Data sync, cleanup, and custom reporting</li>
+        <li class="en">System integration (M3, D365, SQL, APIs)</li>
+        <li class="en">Azure Functions & cloud automation</li>
+        <li class="en">SmartConnect & BPA workflow fixes</li>
+        <li class="en">Data sync, cleanup, and custom reporting</li>
+        <li class="fr">Intégration système (M3, D365, SQL, API)</li>
+        <li class="fr">Automatisation cloud avec Azure Functions</li>
+        <li class="fr">Correction de flux SmartConnect & BPA</li>
+        <li class="fr">Synchronisation de données et rapports personnalisés</li>
       </ul>
     </section>
     <section class="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:fred95311064@swift-mail.com">fred95311064@swift-mail.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/fredmorin" target="_blank">fredmorin</a></p>
+      <p>Email: <a href="mailto:fred@swift-mail.com">fred@swift-mail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/fredmorin" target="_blank">fredmorin</a></p>
+    </section>
+    <section class="form">
+      <h2 class="en">Request a Callback</h2>
+      <h2 class="fr">Demander un rappel</h2>
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="text" name="name" placeholder="Your name / Votre nom" required />
+        <input type="email" name="email" placeholder="Your email / Votre courriel" required />
+        <textarea name="message" rows="4" placeholder="Message / Détails" required></textarea>
+        <button type="submit">Submit / Envoyer</button>
+      </form>
     </section>
   </main>
 </body>
